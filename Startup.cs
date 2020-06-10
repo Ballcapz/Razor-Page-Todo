@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Razor_Page_Todo.Services;
 using RazorTodo.Models;
 using RazorTodo.Services;
 
@@ -34,7 +35,8 @@ namespace RazorTodo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ITodoRepository, TodoDbContext>();
+            services.AddDbContext<TodoDbContext>();
+            services.AddScoped<ITodoRepository, TodoRepository>();
             services.AddRazorPages();
         }
 
